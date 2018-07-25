@@ -15,7 +15,7 @@ variable "ami" {
 
 variable "instance_type" {
   description = "bastion EC2 instance type"
-  default     = "t2.nano"
+  default     = "t2.micro"
 }
 
 variable "availability_zone" {
