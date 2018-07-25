@@ -1,0 +1,43 @@
+{
+    "variables": {
+      "region": "",
+      "availability_zone": "",
+      "source_ami": "",
+      "image_name": "base-image-{{isotime \"2006-01-02\"}}_{{isotime \"03-04-05\"}}",
+      "type": "base-ami-packer",
+      "cookbook_path": "../../chef-repo/site-cookbooks/"
+    },
+    "builders": [{
+      "type": "amazon-ebs",
+      "region": "{{user `region`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ssh_timeout": "5m",
+      "ami_name": "{{user `image_name`}}",
+      "tags": {
+        "Tool": "packer",
+        "Environment": "mgmt",
+        "Name": "{{user `image_name`}}",
+        "type": "{{user `type`}}"
+      }
+    }],
+    "provisioners": 
+    [
+      {
+        "type": "shell",
+        "script": "../scripts/initial.sh",
+        "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'"
+      },
+      {
+        "type": "chef-solo",
+        "cookbook_paths": ["{{user `cookbook_path`}}"],
+        "run_list": [
+          "recipe[chrony::default]"
+        ],
+        "prevent_sudo": false,
+        "skip_install": false
+      }
+    ]
+  }
+  
