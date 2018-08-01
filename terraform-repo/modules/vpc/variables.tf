@@ -28,14 +28,6 @@ variable "private_db_subnets" {
   type        = "list"
 }
 
-/* variable "db_subnet_groups" {
-  description = "private Database Subnet IP 리스트"
-
-  type = "list"
-
-  #type = "string"
-} */
-
 variable "azs" {
   description = "사용할 availability zones 리스트"
   type        = "list"

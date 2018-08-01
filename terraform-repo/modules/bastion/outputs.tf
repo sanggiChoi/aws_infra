@@ -17,3 +17,8 @@ output "eip_id" {
   description = "Bastion에 할당된 EIP ID"
   value       = ["${aws_eip.bastion_ip.id}"]
 }
+
+output "bastion_public_ip" {
+  description = "Bastion에 할당된 Public IP"
+  value       = "${aws_instance.bastion_vm.public_ip}"
+}

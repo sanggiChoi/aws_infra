@@ -2,10 +2,10 @@
 
 export LANG=en_US.utf8
 
-yum -y update
+sudo yum update -y
 
 #add to install package
-yum -y htop, vim, git
+sudo yum -y install htop, vim, git
 
 # Default Time Zone Change
 rm -f /etc/localtime

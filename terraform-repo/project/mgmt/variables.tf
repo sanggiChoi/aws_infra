@@ -15,3 +15,9 @@ variable "base-ami-tag" {
   description = "base-ami-tag"
   default     = "base-ami-packer"
 }
+
+variable "packer_built_bastion_ami" {}
+
+output "bastion_public_ip" {
+  value = "${module.bastion.bastion_public_ip}"
+}

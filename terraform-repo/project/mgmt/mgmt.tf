@@ -64,6 +64,6 @@ module "bastion" {
 
   tags = {
     Terraform   = "true"
-    Environment = "mgmt"
+    Environment = "${var.name}"
   }
 }
