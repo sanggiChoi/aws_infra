@@ -18,10 +18,10 @@ module "vpc" {
   # VPC의 Public Subnet CIDR block을 정의 한다.
   public_subnets = ["10.193.234.0/24", "10.193.235.0/24"]
 
-  # VPC의 Private Web Subnet CIDR block을 정의한다.
+  # VPC의 Private WEB Subnet CIDR block을 정의한다.
   private_web_subnets = ["10.193.224.0/24", "10.193.225.0/24"]
 
-  # VPC의 Private Web Subnet CIDR block을 정의한다.
+  # VPC의 Private WAS Subnet CIDR block을 정의한다.
   private_was_subnets = ["10.193.229.0/24", "10.193.230.0/24"]
 
   # VPC의 Private DB Subnet CIDR block을 정의한다.
@@ -60,7 +60,7 @@ module "bastion" {
   availability_zone   = "ap-northeast-2a"
   subnet_id           = "${module.vpc.public_subnets_ids[0]}"
   ingress_cidr_blocks = "${var.office_cidr_blocks}"
-  keypair_name        = "SE2-POC"
+  keypair_name        = "test"
 
   tags = {
     Terraform   = "true"
