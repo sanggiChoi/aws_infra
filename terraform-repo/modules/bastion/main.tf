@@ -1,5 +1,5 @@
 # SG for SSH Connect to Bastion
-resource "aws_security_group" "bastion" {
+resource "aws_security_group" "default" {
   name        = "${format("%s-sg-bastion", var.name)}"
   description = "Allow SSH connect to bastion instance"
   vpc_id      = "${var.vpc_id}"
@@ -31,7 +31,7 @@ resource "aws_security_group" "ssh_from_bastion" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    security_groups = ["${aws_security_group.bastion.id}"]
+    security_groups = ["${aws_security_group.default.id}"]
   }
 
   tags = "${merge(var.tags, map("Name", format("%s-sg-ssh-from-bastion", var.name)))}"
@@ -44,7 +44,7 @@ resource "aws_instance" "bastion_vm" {
   availability_zone      = "${var.availability_zone}"
   subnet_id              = "${var.subnet_id}"
   key_name               = "${var.keypair_name}"
-  vpc_security_group_ids = ["${aws_security_group.bastion.id}"]
+  vpc_security_group_ids = ["${aws_security_group.default.id}"]
 
   associate_public_ip_address = true
 

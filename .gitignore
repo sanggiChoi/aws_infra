@@ -12,3 +12,5 @@
 *.log
 
 *.pem
+
+.DS_Store
