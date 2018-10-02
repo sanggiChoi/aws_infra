@@ -3,7 +3,9 @@
 ## 들어가면서
 * AWS 상에 뭔가를 해보려면 VPC, Subnet 그리고 Bastion까지가 기본 구성이라 볼 수 있다.
 * 여기서는 prd, devstg, mgmt용으로 3개의 VPC를 구성한다.
-prd: 상용 환경 / devstg: dev 및 stage / mgmt: 관리용
+  * prd: 상용 환경
+  * devstg: dev 및 stage
+  * mgmt: 관리용
 * 각 VPC는 4개의 Subnet으로 구성 된다.
 * 각각의 subnet은 public 1개, private 3개로 public에는 외부 접속, private은 web, was, db 영역이다.
 * 3개의 VPC는 mgmt를 기준으로 peering으로 구성된다.
