@@ -48,7 +48,7 @@ terraform apply
 ```
 
 * VPC 구성 & VPC Peering
-* Packer를 통해 생성된 AMI로 bastion을 생성 합니다.
+  * Packer를 통해 생성된 AMI로 bastion을 생성 합니다.
 ```
 cd  'user_folder'/terraform-repo/project/multi-vpc
 ./apply.sh      # 3개의 VPC 기본 환경 / Peering / Bastion 구성
