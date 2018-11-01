@@ -1,0 +1,4 @@
+- name: Amazon Linux base AMI
+  hosts: all
+  roles:
+    - common

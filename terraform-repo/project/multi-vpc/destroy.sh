@@ -2,19 +2,19 @@
 
 
 printf "\n\n\t\033[35;1mTerraform Destroy Bastion\033[0m\n\n"
-cd ./bastion
+cd ./bastion && rm -rf .terraform
 terraform init
-terraform destroy
+terraform destroy -auto-approve
 cd ..
 
 printf "\n\n\t\033[35;1mTerraform Destroy Peering\033[0m\n\n"
-cd ./peering
+cd ./peering && rm -rf .terraform
 terraform init
-terraform destroy
+terraform destroy -auto-approve
 cd ..
 
 printf "\n\n\t\033[35;1mTerraform Destroy VPC\033[0m\n\n"
-cd ./vpc
+cd ./vpc && rm -rf .terraform
 terraform init
-terraform destroy
+terraform destroy -auto-approve
 cd ..

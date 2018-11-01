@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd ./bastion
+cd ./bastion && rm -rf .terraform
 
-terraform refresh
+terraform init
 
 bastion_ip=$(terraform output --json | jq -r ".bastion_mgmt_public_ip.value")
 echo "SSHing onto Bastion located at: $bastion_ip"

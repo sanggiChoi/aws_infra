@@ -3,7 +3,7 @@
 set -e
 
 packer build \
-  -var-file=./templates/seoul_env.json ./templates/base_template.json | tee ./logs/packer_output.log
+  -var-file=./templates/seoul_env.json ./templates/base_template_ansible.json | tee ./logs/packer_output.log
 
 cat ./logs/packer_output.log | tail -n 2 \
   | sed '$d' \

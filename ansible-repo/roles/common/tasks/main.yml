@@ -1,0 +1,30 @@
+- name: update yum packages
+  yum: list=updates update_cache=true
+  tags: [common]
+
+- name: set Asia/Seoul timezone
+  become: yes
+  command: timedatectl set-timezone Asia/Seoul
+  #timezone:
+  #  name: Asia/Seoul
+  tags: [common]
+
+- name: remove ntp
+  become: yes
+  yum:
+    name: ntp
+    state: absent
+  tags: [common]
+
+- name: install htop, git, chrony
+  become: yes
+  yum: 
+    pkg={{ item }} 
+    state=installed
+  with_items:
+    - htop
+    - unzip
+    - chrony
+  notify:
+    - start chronyd
+  tags: [common]

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  aws:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+#    user: root
+    volumes:
+      - ".:/aws_infra"
+    tty: true

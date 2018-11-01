@@ -1,5 +1,5 @@
 {
     "region": "ap-northeast-2",
     "availability_zone": "ap-northeast-2a",
-    "source_ami": "ami-afd86dc1"
+    "source_ami": "ami-01f7db8de071cd2fc"
 }
